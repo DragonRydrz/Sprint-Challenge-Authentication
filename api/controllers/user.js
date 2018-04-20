@@ -8,11 +8,12 @@ const createUser = (req, res) => {
   const user = new User({ username, password });
   user
     .save()
-    .then(response =>
-      res
+    .then(response => {
+      console.log(`${user.username} account created successfully`);
+      return res
         .status(201)
-        .json({ message: `${user.username} account created successfully` })
-    )
+        .json({ message: `${user.username} account created successfully` });
+    })
     .catch(err => res.status(500).json(err));
 };
 
