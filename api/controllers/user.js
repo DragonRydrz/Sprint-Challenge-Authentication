@@ -9,7 +9,6 @@ const createUser = (req, res) => {
   user
     .save()
     .then(response => {
-      console.log(`${user.username} account created successfully`);
       return res
         .status(201)
         .json({ message: `${user.username} account created successfully` });
