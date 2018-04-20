@@ -7,7 +7,23 @@ class Jokes extends Component {
     jokes: [],
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const token = localStorage.getItem('authToken');
+    console.log(token, 'token');
+    const auth = {
+      headers: {
+        Authorization: token,
+      },
+    };
+
+    axios
+      .get('http://localhost:5000/api/jokes', auth)
+      .then(response => {
+        console.log(response.data);
+        this.setState({ jokes: response.data, authorized: true });
+      })
+      .catch(err => console.log(err));
+  }
 
   authorized = () => {
     if (this.state.authorized) {

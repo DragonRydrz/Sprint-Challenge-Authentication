@@ -14,5 +14,5 @@ const getAllJokes = (req, res) => {
 };
 
 module.exports = {
-  getAllJokes
+  getAllJokes,
 };
